@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blogs | Mahender Kumar</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+
+  <!-- Main portfolio styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    :root {
+      --blog-bg-body: #05030a;
+      --blog-bg-header: #0c0718;
+      --blog-bg-card: #130925;
+      --blog-text-main: #f5f3ff;
+      --blog-text-muted: #a1a1b5;
+      --blog-accent: #a855ff;
+      --blog-accent-hover: #c084fc;
+      --blog-border: rgba(255, 255, 255, 0.08);
+      --blog-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+      --blog-font-main: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--blog-bg-body);
+      font-family: var(--blog-font-main);
+    }
+
+    .blogs-header {
+      background: var(--blog-bg-header);
+      border-bottom: 2px solid var(--blog-accent);
+      padding: 1.5rem 7%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      margin-top: 0.8rem;
+    }
+
+    .blogs-header-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .profile-img-header {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--blog-accent);
+      box-shadow: 0 0 15px rgba(168, 85, 255, 0.7);
+    }
+
+    .blogs-logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--blog-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .blogs-tagline {
+      color: var(--blog-text-muted);
+      font-size: 0.9rem;
+    }
+
+    .blogs-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    .blogs-controls select,
+    .blogs-controls input[type="text"] {
+      background: var(--blog-bg-card);
+      border: 1px solid var(--blog-border);
+      color: var(--blog-text-main);
+      padding: 0.75rem 1rem;
+      border-radius: 0.7rem;
+      outline: none;
+      transition: 0.2s;
+      font-size: 0.9rem;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .blogs-controls select:focus,
+    .blogs-controls input[type="text"]:focus {
+      border-color: var(--blog-accent);
+      box-shadow: 0 0 0 1px rgba(168, 85, 255, 0.4);
+    }
+
+    .blogs-container {
+      max-width: 1200px;
+      margin: 2.5rem auto;
+      padding: 0 7%;
+    }
+
+    .blog-grid-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .blog-card {
+      background: var(--blog-bg-card);
+      border: 1px solid var(--blog-border);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-shadow: var(--blog-shadow);
+      cursor: pointer;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
+      border-color: rgba(168, 85, 255, 0.55);
+    }
+
+    .thumbnail-area {
+      height: 180px;
+      width: 100%;
+      background-color: #1f2933;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thumbnail-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .blog-card:hover .thumbnail-area img {
+      transform: scale(1.06);
+    }
+
+    .blog-card-content {
+      padding: 1rem 1.1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .blog-badge {
+      display: inline-block;
+      background: rgba(168, 85, 255, 0.18);
+      color: var(--blog-accent);
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .blog-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: #ffffff;
+    }
+
+    .blog-excerpt {
+      color: var(--blog-text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .read-more-btn {
+      background: var(--blog-accent);
+      border: none;
+      color: #0b0214;
+      padding: 0.7rem 1.1rem;
+      border-radius: 0.7rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(168, 85, 255, 0.35);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .read-more-btn:hover {
+      background: var(--blog-accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: var(--blog-bg-card);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      max-width: 860px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 1px solid var(--blog-border);
+      position: relative;
+      font-family: var(--blog-font-main);
+    }
+
+    .modal-content img.modal-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.7rem;
+      margin-bottom: 1.2rem;
+      object-fit: cover;
+      max-height: 320px;
+    }
+
+    #modalBody {
+      color: var(--blog-text-muted);
+      font-size: 0.95rem;
+      line-height: 1.9;
+      white-space: normal;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--blog-text-main);
+      background: transparent;
+      border-radius: 50%;
+      padding: 0 0.4rem;
+      line-height: 1;
+      border: none;
+    }
+
+    .blogs-footer {
+      padding: 3rem 7% 3.5rem;
+      border-top: 1px solid var(--blog-border);
+      margin-top: 3rem;
+      text-align: center;
+      font-family: var(--blog-font-main);
+      background: rgba(5, 3, 10, 0.9);
+    }
+
+    .blogs-footer p {
+      color: var(--blog-text-muted);
+      font-size: 0.85rem;
+      max-width: 600px;
+      margin: 0.4rem auto 0;
+    }
+
+    .blogs-footer h3 {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .blogs-footer img.profile-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--blog-accent);
+      box-shadow: 0 0 10px rgba(168, 85, 255, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      .blogs-header {
+        padding-inline: 1.2rem;
+      }
+      .blogs-container {
+        padding-inline: 1.2rem;
+      }
+      .blogs-controls {
+        width: 100%;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .blogs-header {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .blogs-header-main {
+        flex-direction: row;
+        align-items: center;
+        width: auto;
+      }
+      .blogs-controls {
+        flex-direction: row;
+        width: auto;
+      }
+      .blogs-controls select,
+      .blogs-controls input[type="text"] {
+        width: 220px;
+      }
+    }
+
+    /* use main site back-row spacing override for blogs */
+    .blogs-container .back-row {
+      padding: 0 0 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <!-- Main nav -->
+  <header class="nav">
+    <div class="logo-wrap">
+      <img
+        src="https://i.postimg.cc/gJDXFbSQ/Chat-GPT-Image-Dec-12-2025-10-33-58-PM-removebg-preview.png"
+        alt="MK Logo"
+        class="logo-img"
+      />
+      <div class="logo-text">MK<span>.</span></div>
+    </div>
+    <nav>
+      <a href="index.html#home">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="blogs.html">Blogs</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- BLOG header -->
+  <section class="blogs-header">
+    <div class="blogs-header-main">
+      <img src="https://i.postimg.cc/vZz6mpHY/IMG20230408101248.jpg" alt="Mahender" class="profile-img-header"
+        onerror="this.onerror=null;this.src='https://placehold.co/80x80/a855ff/05030a?text=M';">
+      <div>
+        <div class="blogs-logo">MAHENDER BLOGS</div>
+        <p class="blogs-tagline">Exploring Travel, Thoughts, and Technology</p>
+      </div>
+    </div>
+    <div class="blogs-controls">
+      <select id="categoryFilter" onchange="filterPosts()">
+        <option value="all">All Topics</option>
+        <option value="Travel">Travel</option>
+        <option value="Politics">Politics</option>
+        <option value="International Affairs">International Affairs</option>
+        <option value="Study">Study</option>
+        <option value="Food">Food</option>
+        <option value="Science">Science</option>
+        <option value="Fitness">Fitness</option>
+        <option value="Music">Music</option>
+        <option value="Tech">Technology</option>
+        <option value="Thoughts">Thoughts</option>
+      </select>
+      <input type="text" id="searchInput" placeholder="Search blogs..." onkeyup="filterPosts()" />
+    </div>
+  </section>
+
+  <!-- Blog grid -->
+  <main class="blogs-container">
+    <div class="back-row">
+      <a href="index.html#home" class="btn back-btn">← Back to Home</a>
+    </div>
+
+    <div class="section-header">
+      <h3>Blogs</h3>
+      <p>Stories, poems and thoughts from your journey.</p>
+    </div>
+
+    <div class="blog-grid-wrapper">
+      <div class="blog-grid" id="blogGrid"></div>
+    </div>
+  </main>
+
+  <!-- Footer (same structure as other pages) -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-brand">MK<span>.</span></span>
+        <span>© <span id="year"></span> Mahender Kumar · New Delhi, India</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html#home">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="blogs.html">Blogs</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()">&times;</button>
+      <img src="" alt="" class="modal-image" id="modalImage">
+      <div class="blog-badge" id="modalCategory">Category</div>
+      <h2 id="modalTitle" style="margin-bottom:0.8rem;color:#fff;">Title</h2>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    const blogData = [
+      {
+        id: 1,
+        title: "VRINDAVAN TRIP",
+        category: "Travel",
+        image: "https://i.postimg.cc/pXqhggxb/IMG20230416065543.jpg",
+        excerpt: "An exciting travelogue of my memorable 21km Parikrama trip to Vrindavan with my family.",
+        content: `Hey friends, this is Mahender here.
+I am going to tell you my experience when I went to Vrindavan. 
+Yeah, seven months ago, I went there for worship and 
+I was very happy to hear that we were going there.
+So my whole family went there with me. 
+Let's start from where we got ready.
+I am in Rajasthan, Geejgarh.
+We packed all the items that we needed, like stove, cylinder, some fruits and gods' photos.
+And then we prayed to God for this happy journey. And then we all sat in a jeep and a tempo.
+And the happy thing for me was that I sat on the upper side of the tempo and I enjoyed looking at nature's beauty. 
+And after some time, the trees hit those who sat on the tempo. We saved ourselves when the trees tried to hit us. 
+Now we were getting late and it was 8 pm and we were still in Rajasthan. 
+We didn't cross the Rajasthan border yet. And then we got bored, so I started to sing a Radha Rani song and we all sang together.
+At 12 am, we reached there, ate food we brought from home, worshipped Govardhan and started the 21 km parikrama.
+There were many temples, monkeys and donation boxes. We gave money, fed monkeys and completed the parikrama at Radha Kund.
+More story in the next part.`
+      },
+      {
+        id: 2,
+        title: "From Village Adventures to Business Focus",
+        category: "Study",
+        image: "https://i.postimg.cc/zGzv7pRc/IMG_20231212_WA0036.jpg",
+        excerpt: "A reflection on the shift from childhood rural travel adventures to the serious responsibilities of 10th standard, preparing for business and academic success.",
+        content: `Hi everyone, this is Mahender and I'm here to share my story with you. My favourite pastime is visiting rural areas and enjoying the natural beauty. I have been doing this since I was a child and I still love it.
+
+When I was younger, I used to get very excited whenever my father told me that we were going to the village by train. I liked to see the green fields, the mountains, the rivers and the animals from the train window. Sometimes we also travelled by aeroplane and that was even more thrilling. I felt like I was flying in the sky and seeing the world from a different perspective.
+
+But now things have changed. I am in 10th standard and I have many responsibilities. I have to study hard, do my homework, prepare for exams and think about my future. I don't have much time or interest to go to the village anymore. Now my focus is only on becoming a good student and a successful businessman.
+
+I hope you understand my situation and respect my choices. Thank you for reading my blog post and please leave your comments below.`
+      },
+      {
+        id: 3,
+        title: "My First Bicycle: A Childhood Memory",
+        category: "Travel",
+        image: "https://i.postimg.cc/Z51mNLYp/Screenshot_2025_12_03_133428.png",
+        excerpt: "A sentimental story about the first bicycle, racing friends, and the feeling of freedom from childhood.",
+        content: `Hi, my name is Mahender and I want to share with you a story from my childhood. Do you remember the first time you rode a bicycle? I do. It was 10 years ago, when I was 8 years old. I was so curious and excited to learn how to ride a bike that my parents bought me an old one. It was not the fanciest or the newest bike, but it was mine and I loved it.
+
+I used to race with my friends every day after school. We would go to the park or the street and see who could go faster or farther. I was often the winner, because I practiced a lot and had a lot of fun. Riding a bike made me happy and gave me a sense of freedom and adventure. I felt like I could go anywhere and do anything.
+
+But as time passed, my bike got older and rustier. I started to lose interest in riding it. I wanted to try new things and explore new hobbies. I also had more homework and less time to play. So I left my bike in the garage and forgot about it.
+
+Now, I am older and I have not ridden a bike in years. Sometimes I wonder if I still remember how to do it. Maybe one day I will get a new bike and try again. Maybe I will feel the same joy and thrill that I felt when I was 8 years old. But for now, I will just keep this memory in my heart and share it with you.
+
+Thank you for reading my blog post.`
+      },
+      {
+        id: 4,
+        title: "A Day in My Life and IIT Aspirations",
+        category: "Study",
+        image: "https://i.postimg.cc/mZymJ259/93afjr_Hqmks_Hl2srb8Qlw_ZPc08Zes6e_BM2g_CKy5_p_CY_plaintext_638295284752320315.jpg",
+        excerpt: "A glimpse into my life, from a memorable childhood school incident to the current struggles and focus on preparing for the IIT entrance exam.",
+        content: `Hello, this is the story of my life. This journey started on 2006, the day I was born. As I grew up, problems also increased, like every middle-class child.
+
+One incident I remember clearly is from school. After an exam, the teacher kept us in class because the outside area was crowded. My friends and I started beating the tables loudly. The teacher came, got angry and made us stand like cocks in the gallery. Younger kids saw us and laughed. I felt very ashamed and thought of leaving the school, but it was not possible. After some time, the teacher forgave me, but my friends had to stand longer. Later, we all laughed about it together.
+
+Now, years later, life has become more serious. My parents always solve my problems, but there are some things they cannot do for me. I started preparing for IIT four months ago, but today I feel like I have not studied enough and everything is slipping from my hands.
+
+Still, this is part of my journey. I hope you enjoyed reading it and maybe related to some part of it. This story was written on 14 Feb 2023 at 11 am.`
+      },
+      {
+        id: 5,
+        title: "The Dream of the Dausa Bus Stop (A Short Story)",
+        category: "Travel",
+        image: "https://i.postimg.cc/26HLrJmn/IMG20251025110247.jpg",
+        excerpt: "A short, spooky story written in 2022 about an unnerving night experience at a bus stop in Dausa, Rajasthan, which turns out to be a strange dream.",
+        content: `Hello, this is Mahender here. I want to share a story with you that I wrote on 6/10/2022.
+
+This is the story of Dausa, a town in Rajasthan. One day, I went to visit my grandmother's home in Dausa. At night, strange things happened. After visiting my uncle, I went to the bus stop to go to my grandmother’s home. It was late, dark and empty. No bus, no rickshaw, no people.
+
+Suddenly, a bike came, its light shining in my eyes. A man stopped and told me no bus or rickshaw would come at that time. He asked me to come to his home until morning. I was scared and refused. He left, then came back and again asked me to come. Finally, I had no choice and went with him.
+
+When we reached his home, he knocked on the door. A lady opened the door with a knife in her hand. I was terrified. They talked, then we all ate food. I thought they would harm me, but instead they gave me a blanket and I slept.
+
+When I woke up, I was back at the bus stop, alone. Then I realised it was all a dream. This is the story of what happened to me at the Dausa bus stop. I hope you liked it.`
+      },
+      {
+        id: 6,
+        title: "How to Develop a Learning Mindset?",
+        category: "Study",
+        image: "https://i.postimg.cc/q7VY7j09/Screenshot_2025_12_03_140524.png",
+        excerpt: "Discover how to shift from a competitive focus to a learning mindset, embracing challenges for growth and starting your day with clear intention and purpose.",
+        content: `Many people have a competitive mindset and they only want to win. They focus only on beating others and forget to learn something new. Because of this, they miss chances for real growth.
+
+In life, everything is not about winning. We should learn from the situations where we face challenges and problems, not only from the easy moments. A learning mindset means seeing every difficulty as a chance to improve.
+
+One way to build a learning mindset is to start every day with clear intention. Wake up with a plan, a positive attitude and the desire to learn something small every day. Don’t just get up without purpose. When you start your day “in form”, you can focus better on your goals, face obstacles with courage and slowly become a better version of yourself.`
+      },
+      {
+        id: 7,
+        title: "Geejgarh Fort Adventure (2022)",
+        category: "Travel",
+        image: "https://i.postimg.cc/m2T7T903/IMG_20250421_WA0054.jpg",
+        excerpt: "A short story from 2022 detailing a visit to the historic Geejgarh Fort in the village, enjoying the peaceful views and the temple of Lord Shiva.",
+        content: `Hello everyone! Today I visited my village and decided to go to the fort, known as Geejgarh Fort. It has a lot of history and beauty.
+
+I started climbing the fort and enjoyed the amazing view from the top. I could see green fields, blue sky and distant mountains. I felt like I was in a different world, away from stress and noise.
+
+At the top, there was a flat surface where I sat and relaxed. The cool breeze made me feel light and peaceful. I felt like a king on his fort, surrounded by nature. There was a temple of Lord Shiva, many monkeys playing around, and a tap where parrots and other birds came to drink water. It was a beautiful scene.
+
+This small visit helped me forget my worries and remember who I am and where I come from. I hope you enjoyed reading this short story of Geejgarh Fort.`
+      },
+      {
+        id: 8,
+        title: "गलती (Mistake)",
+        category: "Thoughts",
+        image: "https://i.postimg.cc/HsK5XNJm/IMG20251025171837.jpg",
+        excerpt: "एक आत्म-चिंतन कविता, जो गलतियों को क्षमा करने, लेकिन टूटे हुए विश्वास को फिर से जोड़ने की मानसिक कश्मकश को दर्शाती है।",
+        content: `गलती
+
+के भूल जाऊँगा तेरी हर गलती,  
+हर पाप, हर अपराध क्षमा है।  
+लेकिन दिल को कैसे मैं समझाऊँगा,  
+उसी मोड़ से शुरुआत के लिए कैसे मनाऊँगा।
+
+कैसे जोड़ूँगा मैं अपने दिल को,  
+दिल तो दिल, मन को कैसे मैं मनाऊँगा।  
+कैसे फिर मन को झूठी आशाओं से समझाऊँगा,  
+और मन मान भी गया, तो दिमाग पूछ ही लेगा इसका प्रमाण क्या।
+
+कि आशाएँ अब निराशा में नहीं बदलेंगी,  
+जैसे ये पहले बदल गईं, अब नहीं बदलेंगी।`
+      },
+      {
+        id: 9,
+        title: "खुशियाँ (Joys)",
+        category: "Thoughts",
+        image: "https://i.postimg.cc/T1vkQPND/74cf6865_ce0a_459f_b76a_434adfb17a0f.jpg",
+        excerpt: "बचपन की प्यारी यादों और माता-पिता के निस्वार्थ प्यार को दर्शाती एक मार्मिक कविता।",
+        content: `खुशियाँ
+
+जीवन में इतनी कठिनाई है,  
+फिर भी इसी में खुशियाँ पाई हैं।  
+
+बचपन में घुटने-घुटने जाता था,  
+और झट से पापा की गोदी में चढ़ जाता था।  
+
+माँ दूध पिलाने आती थी, मैं पापा के पीछे छिप जाता था।  
+जब मैं खटिया से गिर जाता था,  
+मंद-मंद मुस्कुराता था।  
+
+उसमें भी माँ रो-रोकर अपनी आँख सुजा लिया करती थी।  
+दो मिनट न दिखा तो पूरा मोहल्ला जगा दिया करती थी।  
+
+जीवन में इतनी कठिनाई है,  
+फिर भी इसी में खुशियाँ पाई हैं।`
+      },
+      {
+        id: 10,
+        title: "मन का द्वंद्व",
+        category: "Thoughts",
+        image: "https://i.postimg.cc/DynhwffW/IMG_20250526_WA0024.jpg",
+        excerpt: "आज कुछ मन उदास है, दिल की हर धड़कन उदास है। मन और शरीर के बीच की कश्मकश को दर्शाती एक कविता।",
+        content: `आज कुछ मन उदास है,  
+दिल की हर धड़कन उदास है।  
+
+न जाने क्यों बाँधा है इन बेड़ियों में खुद को मैंने,  
+दिल मचल रहा है ज़माने में मचाने के लिए,  
+लेकिन शरीर ने बाँधा है खुद को, ज़माने में न भटकने के लिए।  
+
+मन कहता है तोड़ दे सारी बेड़ियाँ,  
+दिमाग कहता है पढ़ ले थोड़ा और ज़रा।  
+
+और फिर आत्मा कहती है, चला जा जी ले ज़िंदगी,  
+लेकिन एक बात और सुन ले, चला गया तो आ नहीं पाएगा।  
+
+और मान ले वापस उस स्थिति में आ भी गया,  
+तो तू भी फिर खुद को पहचान नहीं पाएगा।`
+      }
+    ];
+
+    const blogGrid = document.getElementById('blogGrid');
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+
+    function renderPosts(posts) {
+      blogGrid.innerHTML = '';
+
+      if (posts.length === 0) {
+        blogGrid.innerHTML =
+          '<p style="color:var(--blog-text-muted);grid-column:1/-1;text-align:center;padding:2rem;">No posts found matching your criteria.</p>';
+        return;
+      }
+
+      posts.forEach(post => {
+        const card = document.createElement('article');
+        card.className = 'blog-card';
+        card.onclick = () => openModal(post.id);
+        card.innerHTML = `
+          <div class="thumbnail-area">
+            <img src="${post.image}" alt="${post.title}"
+              onerror="this.onerror=null;this.src='https://placehold.co/800x600/130925/f5f3ff?text=Image+Placeholder'"
+              loading="lazy">
+          </div>
+          <div class="blog-card-content">
+            <span class="blog-badge">${post.category}</span>
+            <h3 class="blog-title">${post.title}</h3>
+            <p class="blog-excerpt">${post.excerpt}</p>
+            <button class="read-more-btn" onclick="openModal(${post.id});event.stopPropagation();">
+              Read Article
+            </button>
+          </div>
+        `;
+        blogGrid.appendChild(card);
+      });
+    }
+
+    function filterPosts() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const selectedCategory = categoryFilter.value;
+
+      const filtered = blogData.filter(post => {
+        const matchesSearch =
+          post.title.toLowerCase().includes(searchTerm) ||
+          post.excerpt.toLowerCase().includes(searchTerm);
+        const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
+        return matchesSearch && matchesCategory;
+      });
+
+      renderPosts(filtered);
+    }
+
+    const modal = document.getElementById('modalOverlay');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalImage = document.getElementById('modalImage');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalBody = document.getElementById('modalBody');
+
+    function openModal(id) {
+      const post = blogData.find(p => p.id === id);
+      if (!post) return;
+
+      modalTitle.textContent = post.title;
+      modalImage.src = post.image;
+      modalImage.onerror = () => {
+        modalImage.src = 'https://placehold.co/800x300/130925/f5f3ff?text=Image+Not+Found';
+      };
+      modalCategory.textContent = post.category;
+      modalBody.innerHTML = '<div style="padding-bottom:2.5rem;">' +
+        post.content.replace(/\n/g, '<br>') +
+        '</div>';
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+
+    renderPosts(blogData);
+  </script>
+</body>
+</html>
