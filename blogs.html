@@ -114,7 +114,7 @@
 
     .blog-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
       width: 100%;
       justify-items: center;
@@ -131,8 +131,8 @@
       height: 100%;
       box-shadow: var(--blog-shadow);
       cursor: pointer;
-      max-width: 320px;        
-       width: 100%;
+      max-width: 320px;
+      width: 100%;
     }
 
     .blog-card:hover {
@@ -279,34 +279,8 @@
       border: none;
     }
 
-    .blogs-footer {
-      padding: 3rem 7% 3.5rem;
-      border-top: 1px solid var(--blog-border);
-      margin-top: 3rem;
-      text-align: center;
-      font-family: var(--blog-font-main);
-      background: rgba(5, 3, 10, 0.9);
-    }
-
-    .blogs-footer p {
-      color: var(--blog-text-muted);
-      font-size: 0.85rem;
-      max-width: 600px;
-      margin: 0.4rem auto 0;
-    }
-
-    .blogs-footer h3 {
-      margin-top: 0.5rem;
-      font-size: 1.1rem;
-    }
-
-    .blogs-footer img.profile-img {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--blog-accent);
-      box-shadow: 0 0 10px rgba(168, 85, 255, 0.6);
+    .blogs-container .back-row {
+      padding: 0 0 1rem;
     }
 
     @media (max-width: 768px) {
@@ -341,9 +315,14 @@
       }
     }
 
-    /* use main site back-row spacing override for blogs */
-    .blogs-container .back-row {
-      padding: 0 0 1rem;
+    @media (max-width: 640px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+      .blog-card {
+        max-width: 360px;
+      }
     }
   </style>
 </head>
@@ -414,7 +393,7 @@
     </div>
   </main>
 
-  <!-- Footer (same structure as other pages) -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-left">
@@ -558,44 +537,40 @@ This small visit helped me forget my worries and remember who I am and where I c
       },
       {
         id: 8,
-        title: "गलती (Mistake)",
+        title: "गलती",
         category: "Thoughts",
         image: "https://i.postimg.cc/HsK5XNJm/IMG20251025171837.jpg",
-        excerpt: "एक आत्म-चिंतन कविता, जो गलतियों को क्षमा करने, लेकिन टूटे हुए विश्वास को फिर से जोड़ने की मानसिक कश्मकश को दर्शाती है।",
-        content: `गलती
+        excerpt: "दिल और दिमाग के बीच की खींचतान पर एक गहरी कविता, जहाँ माफी देना आसान है लेकिन टूटा हुआ भरोसा जोड़ना मुश्किल।",
+        content: `के भूल जाऊँगा तेरी हर गलती  
+हर पाप, हर अपराध क्षमा है  
+लेकिन दिल को कैसे मैं समझाऊँगा  
+उसी मोड़ से शुरुआत के लिए कैसे मनाऊँगा  
 
-के भूल जाऊँगा तेरी हर गलती,  
-हर पाप, हर अपराध क्षमा है।  
-लेकिन दिल को कैसे मैं समझाऊँगा,  
-उसी मोड़ से शुरुआत के लिए कैसे मनाऊँगा।
+कैसे जोड़ूँगा मैं अपने दिल को  
+दिल तो दिल, मन को कैसे मैं मनाऊँगा  
+कैसे फिर मन को झूठी आशाओं से समझाऊँगा  
 
-कैसे जोड़ूँगा मैं अपने दिल को,  
-दिल तो दिल, मन को कैसे मैं मनाऊँगा।  
-कैसे फिर मन को झूठी आशाओं से समझाऊँगा,  
-और मन मान भी गया, तो दिमाग पूछ ही लेगा इसका प्रमाण क्या।
-
-कि आशाएँ अब निराशा में नहीं बदलेंगी,  
-जैसे ये पहले बदल गईं, अब नहीं बदलेंगी।`
+और मन मान भी गया, तो दिमाग पूछ ही लेगा  
+इसका प्रमाण क्या कि आशाएँ अब निराशा में नहीं बदलेंगी,  
+जैसे ये पहले बदल गई, अब नहीं बदलेंगी।`
       },
       {
         id: 9,
-        title: "खुशियाँ (Joys)",
+        title: "खुशियाँ",
         category: "Thoughts",
         image: "https://i.postimg.cc/T1vkQPND/74cf6865_ce0a_459f_b76a_434adfb17a0f.jpg",
-        excerpt: "बचपन की प्यारी यादों और माता-पिता के निस्वार्थ प्यार को दर्शाती एक मार्मिक कविता।",
-        content: `खुशियाँ
-
-जीवन में इतनी कठिनाई है,  
+        excerpt: "बचपन की प्यारी यादों और माँ‑बाप के निस्वार्थ प्यार के बीच खुशियाँ ढूँढने वाली कविता।",
+        content: `जीवन में इतनी कठिनाई है,  
 फिर भी इसी में खुशियाँ पाई हैं।  
 
-बचपन में घुटने-घुटने जाता था,  
+बचपन में घुटने‑घुटने जाता था,  
 और झट से पापा की गोदी में चढ़ जाता था।  
 
 माँ दूध पिलाने आती थी, मैं पापा के पीछे छिप जाता था।  
 जब मैं खटिया से गिर जाता था,  
-मंद-मंद मुस्कुराता था।  
+मंद‑मंद मुस्कुराता था।  
 
-उसमें भी माँ रो-रोकर अपनी आँख सुजा लिया करती थी।  
+उसमें भी माँ रो‑रोकर अपनी आँख सुजा लिया करती थी।  
 दो मिनट न दिखा तो पूरा मोहल्ला जगा दिया करती थी।  
 
 जीवन में इतनी कठिनाई है,  
@@ -606,13 +581,13 @@ This small visit helped me forget my worries and remember who I am and where I c
         title: "मन का द्वंद्व",
         category: "Thoughts",
         image: "https://i.postimg.cc/DynhwffW/IMG_20250526_WA0024.jpg",
-        excerpt: "आज कुछ मन उदास है, दिल की हर धड़कन उदास है। मन और शरीर के बीच की कश्मकश को दर्शाती एक कविता।",
+        excerpt: "दिल, दिमाग और आत्मा के बीच चल रही खींचतान का भावनात्मक चित्रण।",
         content: `आज कुछ मन उदास है,  
 दिल की हर धड़कन उदास है।  
 
 न जाने क्यों बाँधा है इन बेड़ियों में खुद को मैंने,  
 दिल मचल रहा है ज़माने में मचाने के लिए,  
-लेकिन शरीर ने बाँधा है खुद को, ज़माने में न भटकने के लिए।  
+लेकिन शरीर ने बाँधा है खुद को ज़माने में न भटकने के लिए।  
 
 मन कहता है तोड़ दे सारी बेड़ियाँ,  
 दिमाग कहता है पढ़ ले थोड़ा और ज़रा।  
@@ -622,6 +597,33 @@ This small visit helped me forget my worries and remember who I am and where I c
 
 और मान ले वापस उस स्थिति में आ भी गया,  
 तो तू भी फिर खुद को पहचान नहीं पाएगा।`
+      },
+      {
+        id: 11,
+        title: "ज़ज़्बातों की उड़ान",
+        category: "Thoughts",
+        image: "https://i.postimg.cc/Z51mNLYp/Screenshot_2025_12_03_133428.png",
+        excerpt: "अधूरे सपनों और पूरे जज़्बातों के बीच की दूरी को समझने वाली छोटी कविता।",
+        content: `सपने अकसर अधूरे होते हैं,  
+जज़्बात लेकिन पूरे होते हैं।  
+
+सपने अगर ज़ेहन में उतर जाएँ,  
+तो हर हालात में पूरे होते हैं।`
+      },
+      {
+        id: 12,
+        title: "रास्ते का मज़ा",
+        category: "Thoughts",
+        image: "https://i.postimg.cc/26HLrJmn/IMG20251025110247.jpg",
+        excerpt: "मंज़िल के पीछे भागते‑भागते रास्ते का मज़ा भूल जाने पर एक हल्की‑फुल्की कविता।",
+        content: `मंज़िल‑मंज़िल करते‑करते,  
+रास्ते पर रोते‑बिलखते,  
+न कभी मंज़िल मिलेगी,  
+न रास्ते पर मंज़िल की खुशियाँ मिलेंगी।  
+
+अरे, जी के तो देखो रास्ता!  
+रास्ते पर मज़ा भी मिलेगा  
+और मंज़िल भी मिलेगी।`
       }
     ];
 
