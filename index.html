@@ -8,6 +8,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Mobile header height adjustments */
+    @media (max-width: 640px) {
+      .nav {
+        padding: 0.4rem 1.2rem;   /* height kam */
+      }
+      .logo-img {
+        width: 34px;
+        height: 34px;
+      }
+      .logo-text {
+        font-size: 1.1rem;
+      }
+      .nav nav a {
+        font-size: 0.8rem;
+        margin-left: 0.6rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="bg-glow"></div>
@@ -39,8 +58,8 @@
         <h1>Mahender <span>Kumar</span></h1>
         <h2>BA History Student · Business Mindset · AI Tools & Coding</h2>
         <p class="hero-sub">
-          From New Delhi, India. Learning web development, content creation and AI tools,
-          working towards building my own startup.
+          From New Delhi, learning web development, content creation and AI tools
+          to build digital products that actually solve problems for students and small businesses.
         </p>
         <div class="hero-actions">
           <a href="projects.html" class="btn primary">View Projects</a>
@@ -67,22 +86,24 @@
       </div>
     </section>
 
-    <!-- SMALL ABOUT PREVIEW -->
+    <!-- SMALL ABOUT PREVIEW (UPDATED TEXT) -->
     <section class="section">
       <div class="section-header">
         <h3>About Me</h3>
-        <p>Short intro about who you are and what you are building.</p>
+        <p>A student from New Delhi, turning ideas into small digital experiments.</p>
       </div>
       <div class="about-grid">
         <div>
           <h4>Who is Mahender?</h4>
           <p>
-            BA History student (3rd semester) from New Delhi with a strong business mindset,
-            interested in coding, AI tools and building digital products.
+            I am a BA History student (3rd semester) with a strong interest in business, coding
+            and AI tools. Right now most of my time goes into learning basics properly and
+            testing small projects like blogs, tools pages and simple web apps.
           </p>
           <p>
-            Experimenting with content creation, trading tools and personal projects while
-            preparing to launch a real startup in the future.
+            My long‑term goal is to build a profitable online business, but today the focus is on
+            improving skills step by step—writing better, understanding users and making clean,
+            fast websites that work well on mobile.
           </p>
         </div>
         <div class="about-cards">
@@ -92,7 +113,7 @@
           </div>
           <div class="pill-card">
             <h5>Focus</h5>
-            <p>Web basics, AI tools, business ideas, trading utilities.</p>
+            <p>Web basics, AI tools, blogging, trading utilities.</p>
           </div>
           <div class="pill-card">
             <h5>Location</h5>
@@ -164,7 +185,7 @@
 
           <button type="submit" class="btn primary full">Send Message</button>
           <p class="form-note">
-            This form is powered by Formspree. You’ll get messages directly in your email.
+            You can use this form to share feedback, ideas or collaboration requests—every serious message is read.
           </p>
         </form>
       </div>
